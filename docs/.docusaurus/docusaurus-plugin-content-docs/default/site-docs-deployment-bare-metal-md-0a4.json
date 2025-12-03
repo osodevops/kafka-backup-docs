@@ -1,0 +1,29 @@
+{
+  "id": "deployment/bare-metal",
+  "title": "Bare Metal Installation",
+  "description": "Install OSO Kafka Backup on bare metal servers and VMs",
+  "source": "@site/docs/deployment/bare-metal.md",
+  "sourceDirName": "deployment",
+  "slug": "/deployment/bare-metal",
+  "permalink": "/deployment/bare-metal",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/deployment/bare-metal.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "Bare Metal Installation",
+    "description": "Install OSO Kafka Backup on bare metal servers and VMs",
+    "sidebar_position": 2
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Deployment Overview",
+    "permalink": "/deployment/"
+  },
+  "next": {
+    "title": "Docker Deployment",
+    "permalink": "/deployment/docker"
+  }
+}

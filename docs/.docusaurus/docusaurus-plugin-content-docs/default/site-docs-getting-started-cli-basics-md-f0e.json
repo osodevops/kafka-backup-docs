@@ -1,0 +1,29 @@
+{
+  "id": "getting-started/cli-basics",
+  "title": "CLI Basics",
+  "description": "Learn the OSO Kafka Backup command-line interface - commands, flags, and common operations",
+  "source": "@site/docs/getting-started/cli-basics.md",
+  "sourceDirName": "getting-started",
+  "slug": "/getting-started/cli-basics",
+  "permalink": "/getting-started/cli-basics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/getting-started/cli-basics.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "title": "CLI Basics",
+    "description": "Learn the OSO Kafka Backup command-line interface - commands, flags, and common operations",
+    "sidebar_position": 3
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "5-Minute Quickstart",
+    "permalink": "/getting-started/quickstart"
+  },
+  "next": {
+    "title": "First Backup Tutorial",
+    "permalink": "/getting-started/first-backup"
+  }
+}

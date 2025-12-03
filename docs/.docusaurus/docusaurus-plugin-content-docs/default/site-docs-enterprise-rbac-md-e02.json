@@ -1,0 +1,29 @@
+{
+  "id": "enterprise/rbac",
+  "title": "RBAC",
+  "description": "Role-based access control for OSO Kafka Backup Enterprise",
+  "source": "@site/docs/enterprise/rbac.md",
+  "sourceDirName": "enterprise",
+  "slug": "/enterprise/rbac",
+  "permalink": "/enterprise/rbac",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/enterprise/rbac.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "title": "RBAC",
+    "description": "Role-based access control for OSO Kafka Backup Enterprise",
+    "sidebar_position": 3
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Field-Level Encryption",
+    "permalink": "/enterprise/encryption"
+  },
+  "next": {
+    "title": "Audit Logging",
+    "permalink": "/enterprise/audit-logging"
+  }
+}

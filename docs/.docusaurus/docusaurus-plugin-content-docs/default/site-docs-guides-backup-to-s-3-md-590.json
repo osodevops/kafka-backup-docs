@@ -1,0 +1,29 @@
+{
+  "id": "guides/backup-to-s3",
+  "title": "Backup to S3",
+  "description": "Step-by-step guide to backing up Kafka topics to Amazon S3",
+  "source": "@site/docs/guides/backup-to-s3.md",
+  "sourceDirName": "guides",
+  "slug": "/guides/backup-to-s3",
+  "permalink": "/guides/backup-to-s3",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/guides/backup-to-s3.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Backup to S3",
+    "description": "Step-by-step guide to backing up Kafka topics to Amazon S3",
+    "sidebar_position": 1
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Google Cloud Storage Setup",
+    "permalink": "/deployment/cloud-setup/gcs"
+  },
+  "next": {
+    "title": "Point-in-Time Recovery",
+    "permalink": "/guides/restore-pitr"
+  }
+}

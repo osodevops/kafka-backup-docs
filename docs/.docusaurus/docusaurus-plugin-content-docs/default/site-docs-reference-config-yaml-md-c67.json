@@ -1,0 +1,29 @@
+{
+  "id": "reference/config-yaml",
+  "title": "Configuration Reference",
+  "description": "Complete reference for OSO Kafka Backup YAML configuration files",
+  "source": "@site/docs/reference/config-yaml.md",
+  "sourceDirName": "reference",
+  "slug": "/reference/config-yaml",
+  "permalink": "/reference/config-yaml",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/reference/config-yaml.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "Configuration Reference",
+    "description": "Complete reference for OSO Kafka Backup YAML configuration files",
+    "sidebar_position": 2
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "CLI Reference",
+    "permalink": "/reference/cli-reference"
+  },
+  "next": {
+    "title": "Storage Format",
+    "permalink": "/reference/storage-format"
+  }
+}

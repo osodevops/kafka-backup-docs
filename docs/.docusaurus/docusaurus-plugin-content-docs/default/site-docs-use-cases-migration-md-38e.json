@@ -1,0 +1,29 @@
+{
+  "id": "use-cases/migration",
+  "title": "Migration",
+  "description": "Use OSO Kafka Backup for Kafka cluster migrations",
+  "source": "@site/docs/use-cases/migration.md",
+  "sourceDirName": "use-cases",
+  "slug": "/use-cases/migration",
+  "permalink": "/use-cases/migration",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/use-cases/migration.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "title": "Migration",
+    "description": "Use OSO Kafka Backup for Kafka cluster migrations",
+    "sidebar_position": 3
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Compliance & Audit",
+    "permalink": "/use-cases/compliance-audit"
+  },
+  "next": {
+    "title": "Feature Comparison",
+    "permalink": "/use-cases/vs-alternatives"
+  }
+}

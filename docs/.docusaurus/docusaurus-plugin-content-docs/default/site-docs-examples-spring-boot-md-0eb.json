@@ -1,0 +1,29 @@
+{
+  "id": "examples/spring-boot",
+  "title": "Spring Boot",
+  "description": "Backup and restore Kafka for Spring Boot applications",
+  "source": "@site/docs/examples/spring-boot.md",
+  "sourceDirName": "examples",
+  "slug": "/examples/spring-boot",
+  "permalink": "/examples/spring-boot",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/examples/spring-boot.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "Spring Boot",
+    "description": "Backup and restore Kafka for Spring Boot applications",
+    "sidebar_position": 2
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Kafka Streams",
+    "permalink": "/examples/kafka-streams"
+  },
+  "next": {
+    "title": "AWS Lambda",
+    "permalink": "/examples/aws-lambda"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "examples/kafka-streams",
+  "title": "Kafka Streams",
+  "description": "Backup and restore Kafka Streams applications",
+  "source": "@site/docs/examples/kafka-streams.md",
+  "sourceDirName": "examples",
+  "slug": "/examples/kafka-streams",
+  "permalink": "/examples/kafka-streams",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/examples/kafka-streams.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Kafka Streams",
+    "description": "Backup and restore Kafka Streams applications",
+    "sidebar_position": 1
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Support",
+    "permalink": "/troubleshooting/support"
+  },
+  "next": {
+    "title": "Spring Boot",
+    "permalink": "/examples/spring-boot"
+  }
+}

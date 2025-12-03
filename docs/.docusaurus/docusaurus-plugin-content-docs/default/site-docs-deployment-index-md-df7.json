@@ -1,0 +1,29 @@
+{
+  "id": "deployment/index",
+  "title": "Deployment Overview",
+  "description": "Deploy OSO Kafka Backup on bare metal, Docker, or Kubernetes",
+  "source": "@site/docs/deployment/index.md",
+  "sourceDirName": "deployment",
+  "slug": "/deployment/",
+  "permalink": "/deployment/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/deployment/index.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Deployment Overview",
+    "description": "Deploy OSO Kafka Backup on bare metal, Docker, or Kubernetes",
+    "sidebar_position": 1
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Feature Comparison",
+    "permalink": "/use-cases/vs-alternatives"
+  },
+  "next": {
+    "title": "Bare Metal Installation",
+    "permalink": "/deployment/bare-metal"
+  }
+}

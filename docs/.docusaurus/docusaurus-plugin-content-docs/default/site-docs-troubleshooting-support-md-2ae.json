@@ -1,0 +1,29 @@
+{
+  "id": "troubleshooting/support",
+  "title": "Support",
+  "description": "Get help with OSO Kafka Backup",
+  "source": "@site/docs/troubleshooting/support.md",
+  "sourceDirName": "troubleshooting",
+  "slug": "/troubleshooting/support",
+  "permalink": "/troubleshooting/support",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/troubleshooting/support.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "title": "Support",
+    "description": "Get help with OSO Kafka Backup",
+    "sidebar_position": 5
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Debug Mode",
+    "permalink": "/troubleshooting/debug-mode"
+  },
+  "next": {
+    "title": "Kafka Streams",
+    "permalink": "/examples/kafka-streams"
+  }
+}

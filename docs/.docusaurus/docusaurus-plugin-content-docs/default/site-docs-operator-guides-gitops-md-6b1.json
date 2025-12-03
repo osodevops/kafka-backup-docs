@@ -1,0 +1,29 @@
+{
+  "id": "operator/guides/gitops",
+  "title": "GitOps",
+  "description": "Manage Kafka backups using GitOps workflows",
+  "source": "@site/docs/operator/guides/gitops.md",
+  "sourceDirName": "operator/guides",
+  "slug": "/operator/guides/gitops",
+  "permalink": "/operator/guides/gitops",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/operator/guides/gitops.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "GitOps",
+    "description": "Manage Kafka backups using GitOps workflows",
+    "sidebar_position": 2
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Scheduled Backups",
+    "permalink": "/operator/guides/scheduled-backups"
+  },
+  "next": {
+    "title": "Secrets",
+    "permalink": "/operator/guides/secrets"
+  }
+}

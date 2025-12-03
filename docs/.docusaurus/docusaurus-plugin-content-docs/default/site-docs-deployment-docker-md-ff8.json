@@ -1,0 +1,29 @@
+{
+  "id": "deployment/docker",
+  "title": "Docker Deployment",
+  "description": "Deploy OSO Kafka Backup using Docker and Docker Compose",
+  "source": "@site/docs/deployment/docker.md",
+  "sourceDirName": "deployment",
+  "slug": "/deployment/docker",
+  "permalink": "/deployment/docker",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/deployment/docker.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "title": "Docker Deployment",
+    "description": "Deploy OSO Kafka Backup using Docker and Docker Compose",
+    "sidebar_position": 3
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Bare Metal Installation",
+    "permalink": "/deployment/bare-metal"
+  },
+  "next": {
+    "title": "Kubernetes Deployment",
+    "permalink": "/deployment/kubernetes"
+  }
+}

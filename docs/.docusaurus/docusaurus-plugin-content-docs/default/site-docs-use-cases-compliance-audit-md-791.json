@@ -1,0 +1,29 @@
+{
+  "id": "use-cases/compliance-audit",
+  "title": "Compliance & Audit",
+  "description": "Use OSO Kafka Backup for regulatory compliance and audit requirements",
+  "source": "@site/docs/use-cases/compliance-audit.md",
+  "sourceDirName": "use-cases",
+  "slug": "/use-cases/compliance-audit",
+  "permalink": "/use-cases/compliance-audit",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/use-cases/compliance-audit.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "Compliance & Audit",
+    "description": "Use OSO Kafka Backup for regulatory compliance and audit requirements",
+    "sidebar_position": 2
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Disaster Recovery",
+    "permalink": "/use-cases/disaster-recovery"
+  },
+  "next": {
+    "title": "Migration",
+    "permalink": "/use-cases/migration"
+  }
+}

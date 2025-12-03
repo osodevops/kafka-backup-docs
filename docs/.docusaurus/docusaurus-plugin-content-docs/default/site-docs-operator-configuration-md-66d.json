@@ -1,0 +1,29 @@
+{
+  "id": "operator/configuration",
+  "title": "Configuration",
+  "description": "Configure the OSO Kafka Backup Operator",
+  "source": "@site/docs/operator/configuration.md",
+  "sourceDirName": "operator",
+  "slug": "/operator/configuration",
+  "permalink": "/operator/configuration",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/operator/configuration.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "title": "Configuration",
+    "description": "Configure the OSO Kafka Backup Operator",
+    "sidebar_position": 3
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Installation",
+    "permalink": "/operator/installation"
+  },
+  "next": {
+    "title": "KafkaBackup",
+    "permalink": "/operator/crds/kafkabackup"
+  }
+}

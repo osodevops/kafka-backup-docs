@@ -1,0 +1,29 @@
+{
+  "id": "guides/restore-pitr",
+  "title": "Point-in-Time Recovery",
+  "description": "Restore Kafka data to a specific point in time using PITR",
+  "source": "@site/docs/guides/restore-pitr.md",
+  "sourceDirName": "guides",
+  "slug": "/guides/restore-pitr",
+  "permalink": "/guides/restore-pitr",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/guides/restore-pitr.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "Point-in-Time Recovery",
+    "description": "Restore Kafka data to a specific point in time using PITR",
+    "sidebar_position": 2
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Backup to S3",
+    "permalink": "/guides/backup-to-s3"
+  },
+  "next": {
+    "title": "Offset Management",
+    "permalink": "/guides/offset-management"
+  }
+}

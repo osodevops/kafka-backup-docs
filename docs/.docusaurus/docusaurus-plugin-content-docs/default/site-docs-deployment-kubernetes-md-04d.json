@@ -1,0 +1,29 @@
+{
+  "id": "deployment/kubernetes",
+  "title": "Kubernetes Deployment",
+  "description": "Deploy OSO Kafka Backup on Kubernetes manually or with the Operator",
+  "source": "@site/docs/deployment/kubernetes.md",
+  "sourceDirName": "deployment",
+  "slug": "/deployment/kubernetes",
+  "permalink": "/deployment/kubernetes",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/deployment/kubernetes.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "title": "Kubernetes Deployment",
+    "description": "Deploy OSO Kafka Backup on Kubernetes manually or with the Operator",
+    "sidebar_position": 4
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Docker Deployment",
+    "permalink": "/deployment/docker"
+  },
+  "next": {
+    "title": "AWS S3 Setup",
+    "permalink": "/deployment/cloud-setup/aws-s3"
+  }
+}

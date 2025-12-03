@@ -1,0 +1,29 @@
+{
+  "id": "architecture/pitr-implementation",
+  "title": "PITR Implementation",
+  "description": "How point-in-time recovery works in OSO Kafka Backup",
+  "source": "@site/docs/architecture/pitr-implementation.md",
+  "sourceDirName": "architecture",
+  "slug": "/architecture/pitr-implementation",
+  "permalink": "/architecture/pitr-implementation",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/architecture/pitr-implementation.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "title": "PITR Implementation",
+    "description": "How point-in-time recovery works in OSO Kafka Backup",
+    "sidebar_position": 3
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Offset Translation",
+    "permalink": "/architecture/offset-translation"
+  },
+  "next": {
+    "title": "Compression",
+    "permalink": "/architecture/compression"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "getting-started/index",
+  "title": "Getting Started",
+  "description": "Get started with OSO Kafka Backup - installation, CLI basics, and your first backup",
+  "source": "@site/docs/getting-started/index.md",
+  "sourceDirName": "getting-started",
+  "slug": "/getting-started/",
+  "permalink": "/getting-started/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/getting-started/index.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Getting Started",
+    "description": "Get started with OSO Kafka Backup - installation, CLI basics, and your first backup",
+    "sidebar_position": 1
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "OSO Kafka Backup",
+    "permalink": "/"
+  },
+  "next": {
+    "title": "5-Minute Quickstart",
+    "permalink": "/getting-started/quickstart"
+  }
+}

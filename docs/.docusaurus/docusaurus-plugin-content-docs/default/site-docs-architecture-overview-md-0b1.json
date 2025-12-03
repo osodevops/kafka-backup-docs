@@ -1,0 +1,29 @@
+{
+  "id": "architecture/overview",
+  "title": "Architecture Overview",
+  "description": "Understanding the OSO Kafka Backup architecture and design principles",
+  "source": "@site/docs/architecture/overview.md",
+  "sourceDirName": "architecture",
+  "slug": "/architecture/overview",
+  "permalink": "/architecture/overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/architecture/overview.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Architecture Overview",
+    "description": "Understanding the OSO Kafka Backup architecture and design principles",
+    "sidebar_position": 1
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Licensing",
+    "permalink": "/enterprise/licensing"
+  },
+  "next": {
+    "title": "Offset Translation",
+    "permalink": "/architecture/offset-translation"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "enterprise/encryption",
+  "title": "Field-Level Encryption",
+  "description": "Encrypt sensitive fields in Kafka messages during backup",
+  "source": "@site/docs/enterprise/encryption.md",
+  "sourceDirName": "enterprise",
+  "slug": "/enterprise/encryption",
+  "permalink": "/enterprise/encryption",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/enterprise/encryption.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "Field-Level Encryption",
+    "description": "Encrypt sensitive fields in Kafka messages during backup",
+    "sidebar_position": 2
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Enterprise Overview",
+    "permalink": "/enterprise/"
+  },
+  "next": {
+    "title": "RBAC",
+    "permalink": "/enterprise/rbac"
+  }
+}

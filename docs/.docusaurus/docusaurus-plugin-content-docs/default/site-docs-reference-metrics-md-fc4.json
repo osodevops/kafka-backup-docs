@@ -1,0 +1,29 @@
+{
+  "id": "reference/metrics",
+  "title": "Metrics Reference",
+  "description": "OSO Kafka Backup Prometheus metrics reference",
+  "source": "@site/docs/reference/metrics.md",
+  "sourceDirName": "reference",
+  "slug": "/reference/metrics",
+  "permalink": "/reference/metrics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/reference/metrics.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "title": "Metrics Reference",
+    "description": "OSO Kafka Backup Prometheus metrics reference",
+    "sidebar_position": 5
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Error Codes",
+    "permalink": "/reference/error-codes"
+  },
+  "next": {
+    "title": "Operator Overview",
+    "permalink": "/operator/"
+  }
+}

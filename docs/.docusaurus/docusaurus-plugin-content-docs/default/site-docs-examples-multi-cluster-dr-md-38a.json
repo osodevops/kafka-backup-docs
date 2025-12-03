@@ -1,0 +1,25 @@
+{
+  "id": "examples/multi-cluster-dr",
+  "title": "Multi-Cluster DR",
+  "description": "Disaster recovery across multiple Kafka clusters",
+  "source": "@site/docs/examples/multi-cluster-dr.md",
+  "sourceDirName": "examples",
+  "slug": "/examples/multi-cluster-dr",
+  "permalink": "/examples/multi-cluster-dr",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/examples/multi-cluster-dr.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "title": "Multi-Cluster DR",
+    "description": "Disaster recovery across multiple Kafka clusters",
+    "sidebar_position": 4
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "AWS Lambda",
+    "permalink": "/examples/aws-lambda"
+  }
+}

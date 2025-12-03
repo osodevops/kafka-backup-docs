@@ -1,0 +1,100 @@
+name: Validate Documentation
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'docs/**'
+      - '.github/workflows/docs-validate.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/**'
+      - '.github/workflows/docs-validate.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: docs
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: docs/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check for build errors
+        run: npm run build
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+
+      - name: Check for broken links
+        run: |
+          npm run build 2>&1 | tee build.log
+          if grep -i "broken link" build.log; then
+            echo "::error::Broken links detected in documentation"
+            exit 1
+          fi
+
+  lint-markdown:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install markdownlint
+        run: npm install -g markdownlint-cli
+
+      - name: Lint Markdown files
+        run: markdownlint 'docs/docs/**/*.md' --config .markdownlint.json || true
+        continue-on-error: true
+
+  check-frontmatter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check frontmatter
+        run: |
+          echo "Checking all markdown files have frontmatter..."
+          find docs/docs -name "*.md" | while read file; do
+            if ! head -1 "$file" | grep -q "^---$"; then
+              echo "::warning file=$file::Missing frontmatter"
+            fi
+          done
+          echo "Frontmatter check complete"
+
+  spell-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install cspell
+        run: npm install -g cspell
+
+      - name: Run spell check
+        run: cspell "docs/docs/**/*.md" --no-progress || true
+        continue-on-error: true

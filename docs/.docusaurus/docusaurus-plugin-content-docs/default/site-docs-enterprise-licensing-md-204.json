@@ -1,0 +1,29 @@
+{
+  "id": "enterprise/licensing",
+  "title": "Licensing",
+  "description": "OSO Kafka Backup Enterprise licensing and activation",
+  "source": "@site/docs/enterprise/licensing.md",
+  "sourceDirName": "enterprise",
+  "slug": "/enterprise/licensing",
+  "permalink": "/enterprise/licensing",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/enterprise/licensing.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "title": "Licensing",
+    "description": "OSO Kafka Backup Enterprise licensing and activation",
+    "sidebar_position": 6
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Schema Registry",
+    "permalink": "/enterprise/schema-registry"
+  },
+  "next": {
+    "title": "Architecture Overview",
+    "permalink": "/architecture/overview"
+  }
+}

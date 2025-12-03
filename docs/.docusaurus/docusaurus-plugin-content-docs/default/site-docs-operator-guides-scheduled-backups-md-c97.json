@@ -1,0 +1,29 @@
+{
+  "id": "operator/guides/scheduled-backups",
+  "title": "Scheduled Backups",
+  "description": "Configure automated backup schedules with the Kubernetes Operator",
+  "source": "@site/docs/operator/guides/scheduled-backups.md",
+  "sourceDirName": "operator/guides",
+  "slug": "/operator/guides/scheduled-backups",
+  "permalink": "/operator/guides/scheduled-backups",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/operator/guides/scheduled-backups.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Scheduled Backups",
+    "description": "Configure automated backup schedules with the Kubernetes Operator",
+    "sidebar_position": 1
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "KafkaOffsetRollback",
+    "permalink": "/operator/crds/kafkaoffsetrollback"
+  },
+  "next": {
+    "title": "GitOps",
+    "permalink": "/operator/guides/gitops"
+  }
+}

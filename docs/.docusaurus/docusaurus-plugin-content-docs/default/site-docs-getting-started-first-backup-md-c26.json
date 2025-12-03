@@ -1,0 +1,29 @@
+{
+  "id": "getting-started/first-backup",
+  "title": "First Backup Tutorial",
+  "description": "Complete step-by-step guide to backing up and restoring your first Kafka topic",
+  "source": "@site/docs/getting-started/first-backup.md",
+  "sourceDirName": "getting-started",
+  "slug": "/getting-started/first-backup",
+  "permalink": "/getting-started/first-backup",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/getting-started/first-backup.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "title": "First Backup Tutorial",
+    "description": "Complete step-by-step guide to backing up and restoring your first Kafka topic",
+    "sidebar_position": 4
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "CLI Basics",
+    "permalink": "/getting-started/cli-basics"
+  },
+  "next": {
+    "title": "Disaster Recovery",
+    "permalink": "/use-cases/disaster-recovery"
+  }
+}

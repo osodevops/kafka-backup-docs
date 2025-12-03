@@ -1,0 +1,318 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/",
+          "mainDocId": "intro",
+          "docs": [
+            {
+              "id": "architecture/compression",
+              "path": "/architecture/compression",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "architecture/offset-translation",
+              "path": "/architecture/offset-translation",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "architecture/overview",
+              "path": "/architecture/overview",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "architecture/pitr-implementation",
+              "path": "/architecture/pitr-implementation",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "architecture/zero-copy-optimization",
+              "path": "/architecture/zero-copy-optimization",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "deployment/bare-metal",
+              "path": "/deployment/bare-metal",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "deployment/cloud-setup/aws-s3",
+              "path": "/deployment/cloud-setup/aws-s3",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "deployment/cloud-setup/azure-blob",
+              "path": "/deployment/cloud-setup/azure-blob",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "deployment/cloud-setup/gcs",
+              "path": "/deployment/cloud-setup/gcs",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "deployment/docker",
+              "path": "/deployment/docker",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "deployment/index",
+              "path": "/deployment/",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "deployment/kubernetes",
+              "path": "/deployment/kubernetes",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "enterprise/audit-logging",
+              "path": "/enterprise/audit-logging",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "enterprise/encryption",
+              "path": "/enterprise/encryption",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "enterprise/index",
+              "path": "/enterprise/",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "enterprise/licensing",
+              "path": "/enterprise/licensing",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "enterprise/rbac",
+              "path": "/enterprise/rbac",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "enterprise/schema-registry",
+              "path": "/enterprise/schema-registry",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "examples/aws-lambda",
+              "path": "/examples/aws-lambda",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "examples/kafka-streams",
+              "path": "/examples/kafka-streams",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "examples/multi-cluster-dr",
+              "path": "/examples/multi-cluster-dr",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "examples/spring-boot",
+              "path": "/examples/spring-boot",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "getting-started/cli-basics",
+              "path": "/getting-started/cli-basics",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "getting-started/first-backup",
+              "path": "/getting-started/first-backup",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "getting-started/index",
+              "path": "/getting-started/",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "getting-started/quickstart",
+              "path": "/getting-started/quickstart",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "guides/backup-to-s3",
+              "path": "/guides/backup-to-s3",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "guides/offset-management",
+              "path": "/guides/offset-management",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "guides/performance-tuning",
+              "path": "/guides/performance-tuning",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "guides/restore-pitr",
+              "path": "/guides/restore-pitr",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "guides/security-setup",
+              "path": "/guides/security-setup",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "intro",
+              "path": "/",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "operator/configuration",
+              "path": "/operator/configuration",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "operator/crds/kafkabackup",
+              "path": "/operator/crds/kafkabackup",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "operator/crds/kafkaoffsetreset",
+              "path": "/operator/crds/kafkaoffsetreset",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "operator/crds/kafkaoffsetrollback",
+              "path": "/operator/crds/kafkaoffsetrollback",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "operator/crds/kafkarestore",
+              "path": "/operator/crds/kafkarestore",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "operator/guides/gitops",
+              "path": "/operator/guides/gitops",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "operator/guides/scheduled-backups",
+              "path": "/operator/guides/scheduled-backups",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "operator/guides/secrets",
+              "path": "/operator/guides/secrets",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "operator/index",
+              "path": "/operator/",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "operator/installation",
+              "path": "/operator/installation",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "operator/metrics",
+              "path": "/operator/metrics",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "operator/troubleshooting",
+              "path": "/operator/troubleshooting",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "reference/cli-reference",
+              "path": "/reference/cli-reference",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "reference/config-yaml",
+              "path": "/reference/config-yaml",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "reference/error-codes",
+              "path": "/reference/error-codes",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "reference/metrics",
+              "path": "/reference/metrics",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "reference/storage-format",
+              "path": "/reference/storage-format",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "troubleshooting/common-errors",
+              "path": "/troubleshooting/common-errors",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "troubleshooting/debug-mode",
+              "path": "/troubleshooting/debug-mode",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "troubleshooting/offset-discontinuity",
+              "path": "/troubleshooting/offset-discontinuity",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "troubleshooting/performance-issues",
+              "path": "/troubleshooting/performance-issues",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "troubleshooting/support",
+              "path": "/troubleshooting/support",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "use-cases/compliance-audit",
+              "path": "/use-cases/compliance-audit",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "use-cases/disaster-recovery",
+              "path": "/use-cases/disaster-recovery",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "use-cases/migration",
+              "path": "/use-cases/migration",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "use-cases/vs-alternatives",
+              "path": "/use-cases/vs-alternatives",
+              "sidebar": "docsSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "docsSidebar": {
+              "link": {
+                "path": "/",
+                "label": "intro"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

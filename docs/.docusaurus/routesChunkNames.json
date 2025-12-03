@@ -1,0 +1,247 @@
+{
+  "/-ee1": {
+    "__comp": "5e95c892",
+    "__context": {
+      "plugin": "aba21aa0"
+    }
+  },
+  "/-2f6": {
+    "__comp": "a7bd4aaa",
+    "__props": "22dd74f7"
+  },
+  "/-caf": {
+    "__comp": "a94703ab"
+  },
+  "/architecture/compression-a64": {
+    "__comp": "17896441",
+    "content": "d24dfeea"
+  },
+  "/architecture/offset-translation-a9d": {
+    "__comp": "17896441",
+    "content": "2a678caa"
+  },
+  "/architecture/overview-67c": {
+    "__comp": "17896441",
+    "content": "0b1ac180"
+  },
+  "/architecture/pitr-implementation-68f": {
+    "__comp": "17896441",
+    "content": "2cb8cf43"
+  },
+  "/architecture/zero-copy-optimization-80f": {
+    "__comp": "17896441",
+    "content": "038c152b"
+  },
+  "/deployment/-703": {
+    "__comp": "17896441",
+    "content": "df7910db"
+  },
+  "/deployment/bare-metal-2fb": {
+    "__comp": "17896441",
+    "content": "0a44bce0"
+  },
+  "/deployment/cloud-setup/aws-s3-40d": {
+    "__comp": "17896441",
+    "content": "127ad2c8"
+  },
+  "/deployment/cloud-setup/azure-blob-26a": {
+    "__comp": "17896441",
+    "content": "29b04fc4"
+  },
+  "/deployment/cloud-setup/gcs-3be": {
+    "__comp": "17896441",
+    "content": "06373f14"
+  },
+  "/deployment/docker-19c": {
+    "__comp": "17896441",
+    "content": "ff8b1e34"
+  },
+  "/deployment/kubernetes-6dc": {
+    "__comp": "17896441",
+    "content": "04da809a"
+  },
+  "/enterprise/-24c": {
+    "__comp": "17896441",
+    "content": "ca1ac85d"
+  },
+  "/enterprise/audit-logging-025": {
+    "__comp": "17896441",
+    "content": "96e7ed76"
+  },
+  "/enterprise/encryption-10b": {
+    "__comp": "17896441",
+    "content": "1ae7e3f1"
+  },
+  "/enterprise/licensing-f26": {
+    "__comp": "17896441",
+    "content": "2044c519"
+  },
+  "/enterprise/rbac-956": {
+    "__comp": "17896441",
+    "content": "e02286a6"
+  },
+  "/enterprise/schema-registry-efa": {
+    "__comp": "17896441",
+    "content": "42297790"
+  },
+  "/examples/aws-lambda-4f3": {
+    "__comp": "17896441",
+    "content": "cbe6bb41"
+  },
+  "/examples/kafka-streams-5f8": {
+    "__comp": "17896441",
+    "content": "ca8deb2e"
+  },
+  "/examples/multi-cluster-dr-b1d": {
+    "__comp": "17896441",
+    "content": "38aa9855"
+  },
+  "/examples/spring-boot-c03": {
+    "__comp": "17896441",
+    "content": "0eb6084a"
+  },
+  "/getting-started/-61c": {
+    "__comp": "17896441",
+    "content": "54c82979"
+  },
+  "/getting-started/cli-basics-b7e": {
+    "__comp": "17896441",
+    "content": "f0e7bce6"
+  },
+  "/getting-started/first-backup-2c7": {
+    "__comp": "17896441",
+    "content": "c269bbf0"
+  },
+  "/getting-started/quickstart-e41": {
+    "__comp": "17896441",
+    "content": "fbd7a87c"
+  },
+  "/guides/backup-to-s3-a02": {
+    "__comp": "17896441",
+    "content": "590a1bc8"
+  },
+  "/guides/offset-management-4e0": {
+    "__comp": "17896441",
+    "content": "b7bb70b0"
+  },
+  "/guides/performance-tuning-539": {
+    "__comp": "17896441",
+    "content": "98a56891"
+  },
+  "/guides/restore-pitr-e6c": {
+    "__comp": "17896441",
+    "content": "2cc1b977"
+  },
+  "/guides/security-setup-d87": {
+    "__comp": "17896441",
+    "content": "0e9c2392"
+  },
+  "/operator/-300": {
+    "__comp": "17896441",
+    "content": "7c53836b"
+  },
+  "/operator/configuration-4f1": {
+    "__comp": "17896441",
+    "content": "66dcd4bf"
+  },
+  "/operator/crds/kafkabackup-432": {
+    "__comp": "17896441",
+    "content": "b0170f28"
+  },
+  "/operator/crds/kafkaoffsetreset-15b": {
+    "__comp": "17896441",
+    "content": "761cabfa"
+  },
+  "/operator/crds/kafkaoffsetrollback-072": {
+    "__comp": "17896441",
+    "content": "25d8d768"
+  },
+  "/operator/crds/kafkarestore-564": {
+    "__comp": "17896441",
+    "content": "5c76aff1"
+  },
+  "/operator/guides/gitops-a6f": {
+    "__comp": "17896441",
+    "content": "6b151aa6"
+  },
+  "/operator/guides/scheduled-backups-06d": {
+    "__comp": "17896441",
+    "content": "c97c7f46"
+  },
+  "/operator/guides/secrets-372": {
+    "__comp": "17896441",
+    "content": "dc78edcc"
+  },
+  "/operator/installation-025": {
+    "__comp": "17896441",
+    "content": "3955f6cd"
+  },
+  "/operator/metrics-ad1": {
+    "__comp": "17896441",
+    "content": "ed6628a5"
+  },
+  "/operator/troubleshooting-812": {
+    "__comp": "17896441",
+    "content": "a3cc3437"
+  },
+  "/reference/cli-reference-944": {
+    "__comp": "17896441",
+    "content": "204d2c6c"
+  },
+  "/reference/config-yaml-36f": {
+    "__comp": "17896441",
+    "content": "c675a325"
+  },
+  "/reference/error-codes-742": {
+    "__comp": "17896441",
+    "content": "33e65611"
+  },
+  "/reference/metrics-ffa": {
+    "__comp": "17896441",
+    "content": "fc49bffc"
+  },
+  "/reference/storage-format-b19": {
+    "__comp": "17896441",
+    "content": "5b9733ec"
+  },
+  "/troubleshooting/common-errors-2a1": {
+    "__comp": "17896441",
+    "content": "49b9fcae"
+  },
+  "/troubleshooting/debug-mode-bd0": {
+    "__comp": "17896441",
+    "content": "b6af8b7b"
+  },
+  "/troubleshooting/offset-discontinuity-391": {
+    "__comp": "17896441",
+    "content": "572139f1"
+  },
+  "/troubleshooting/performance-issues-877": {
+    "__comp": "17896441",
+    "content": "db1ff827"
+  },
+  "/troubleshooting/support-78f": {
+    "__comp": "17896441",
+    "content": "2aeed981"
+  },
+  "/use-cases/compliance-audit-7cb": {
+    "__comp": "17896441",
+    "content": "7910e230"
+  },
+  "/use-cases/disaster-recovery-58d": {
+    "__comp": "17896441",
+    "content": "21bd30be"
+  },
+  "/use-cases/migration-253": {
+    "__comp": "17896441",
+    "content": "38e6bf62"
+  },
+  "/use-cases/vs-alternatives-e88": {
+    "__comp": "17896441",
+    "content": "34a3984a"
+  },
+  "/-b56": {
+    "__comp": "17896441",
+    "content": "0e384e19"
+  }
+}

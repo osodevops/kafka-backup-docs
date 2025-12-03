@@ -1,0 +1,29 @@
+{
+  "id": "troubleshooting/performance-issues",
+  "title": "Performance Issues",
+  "description": "Troubleshooting slow backup and restore operations",
+  "source": "@site/docs/troubleshooting/performance-issues.md",
+  "sourceDirName": "troubleshooting",
+  "slug": "/troubleshooting/performance-issues",
+  "permalink": "/troubleshooting/performance-issues",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/troubleshooting/performance-issues.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "Performance Issues",
+    "description": "Troubleshooting slow backup and restore operations",
+    "sidebar_position": 2
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Common Errors",
+    "permalink": "/troubleshooting/common-errors"
+  },
+  "next": {
+    "title": "Offset Discontinuity",
+    "permalink": "/troubleshooting/offset-discontinuity"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "architecture/compression",
+  "title": "Compression",
+  "description": "How OSO Kafka Backup compresses data for efficient storage",
+  "source": "@site/docs/architecture/compression.md",
+  "sourceDirName": "architecture",
+  "slug": "/architecture/compression",
+  "permalink": "/architecture/compression",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/architecture/compression.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "title": "Compression",
+    "description": "How OSO Kafka Backup compresses data for efficient storage",
+    "sidebar_position": 4
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "PITR Implementation",
+    "permalink": "/architecture/pitr-implementation"
+  },
+  "next": {
+    "title": "Zero-Copy Optimization",
+    "permalink": "/architecture/zero-copy-optimization"
+  }
+}

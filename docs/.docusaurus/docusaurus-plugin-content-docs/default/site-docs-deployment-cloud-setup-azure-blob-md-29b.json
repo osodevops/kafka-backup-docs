@@ -1,0 +1,29 @@
+{
+  "id": "deployment/cloud-setup/azure-blob",
+  "title": "Azure Blob Storage Setup",
+  "description": "Configure Azure Blob Storage as backend for OSO Kafka Backup",
+  "source": "@site/docs/deployment/cloud-setup/azure-blob.md",
+  "sourceDirName": "deployment/cloud-setup",
+  "slug": "/deployment/cloud-setup/azure-blob",
+  "permalink": "/deployment/cloud-setup/azure-blob",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/deployment/cloud-setup/azure-blob.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "Azure Blob Storage Setup",
+    "description": "Configure Azure Blob Storage as backend for OSO Kafka Backup",
+    "sidebar_position": 2
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "AWS S3 Setup",
+    "permalink": "/deployment/cloud-setup/aws-s3"
+  },
+  "next": {
+    "title": "Google Cloud Storage Setup",
+    "permalink": "/deployment/cloud-setup/gcs"
+  }
+}

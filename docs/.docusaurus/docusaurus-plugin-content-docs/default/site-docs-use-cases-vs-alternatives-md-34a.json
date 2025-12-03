@@ -1,0 +1,29 @@
+{
+  "id": "use-cases/vs-alternatives",
+  "title": "Feature Comparison",
+  "description": "Compare OSO Kafka Backup with MirrorMaker, Confluent Replicator, and other solutions",
+  "source": "@site/docs/use-cases/vs-alternatives.md",
+  "sourceDirName": "use-cases",
+  "slug": "/use-cases/vs-alternatives",
+  "permalink": "/use-cases/vs-alternatives",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/use-cases/vs-alternatives.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "title": "Feature Comparison",
+    "description": "Compare OSO Kafka Backup with MirrorMaker, Confluent Replicator, and other solutions",
+    "sidebar_position": 4
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Migration",
+    "permalink": "/use-cases/migration"
+  },
+  "next": {
+    "title": "Deployment Overview",
+    "permalink": "/deployment/"
+  }
+}

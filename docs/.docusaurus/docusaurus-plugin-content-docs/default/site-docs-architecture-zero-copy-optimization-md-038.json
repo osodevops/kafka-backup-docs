@@ -1,0 +1,29 @@
+{
+  "id": "architecture/zero-copy-optimization",
+  "title": "Zero-Copy Optimization",
+  "description": "Performance optimizations in OSO Kafka Backup",
+  "source": "@site/docs/architecture/zero-copy-optimization.md",
+  "sourceDirName": "architecture",
+  "slug": "/architecture/zero-copy-optimization",
+  "permalink": "/architecture/zero-copy-optimization",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/architecture/zero-copy-optimization.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "title": "Zero-Copy Optimization",
+    "description": "Performance optimizations in OSO Kafka Backup",
+    "sidebar_position": 5
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Compression",
+    "permalink": "/architecture/compression"
+  },
+  "next": {
+    "title": "Common Errors",
+    "permalink": "/troubleshooting/common-errors"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "operator/index",
+  "title": "Operator Overview",
+  "description": "Kubernetes Operator for OSO Kafka Backup",
+  "source": "@site/docs/operator/index.md",
+  "sourceDirName": "operator",
+  "slug": "/operator/",
+  "permalink": "/operator/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/osodevops/kafka-backup-docs/tree/main/docs/docs/operator/index.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Operator Overview",
+    "description": "Kubernetes Operator for OSO Kafka Backup",
+    "sidebar_position": 1
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Metrics Reference",
+    "permalink": "/reference/metrics"
+  },
+  "next": {
+    "title": "Installation",
+    "permalink": "/operator/installation"
+  }
+}

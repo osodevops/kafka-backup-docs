@@ -42,7 +42,7 @@ const config = {
       navbar: {
         title: 'OSO Kafka Backup',
         logo: {
-          alt: 'OSO DevOps Logo',
+          alt: 'OSO Logo',
           src: 'img/logo.svg',
         },
         items: [
@@ -59,7 +59,7 @@ const config = {
           },
           {
             href: 'https://www.oso.sh',
-            label: 'OSO DevOps',
+            label: 'OSO',
             position: 'right',
           },
         ],
@@ -115,7 +115,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} OSO DevOps. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} OSO. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,

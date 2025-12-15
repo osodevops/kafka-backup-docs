@@ -137,35 +137,86 @@ az ad sp create-for-rbac \
 
 ## Configuration
 
+OSO Kafka Backup v0.2.1+ supports multiple Azure authentication methods with automatic detection.
+
+### Authentication Methods
+
+| Method | Use Case | Required Fields |
+|--------|----------|-----------------|
+| Account Key | Development/testing | `account_key` |
+| SAS Token | Time-limited access | `sas_token` |
+| Service Principal | CI/CD pipelines | `client_id`, `tenant_id`, `client_secret` |
+| Workload Identity | AKS with managed identity | `use_workload_identity: true` (or auto-detected) |
+| DefaultAzureCredential | Fallback chain | No auth fields (uses Azure SDK default) |
+
 ### With Storage Account Key
 
 ```yaml title="backup.yaml"
 storage:
   backend: azure
-  container: kafka-backups
   account_name: kafkabackups123456
+  container_name: kafka-backups
   account_key: ${AZURE_STORAGE_KEY}
   prefix: production/daily
 ```
 
-### With Connection String
+### With SAS Token
 
 ```yaml title="backup.yaml"
 storage:
   backend: azure
-  container: kafka-backups
-  connection_string: ${AZURE_STORAGE_CONNECTION_STRING}
+  account_name: kafkabackups123456
+  container_name: kafka-backups
+  sas_token: ${AZURE_SAS_TOKEN}
   prefix: production/daily
 ```
 
-### With Managed Identity
+### With Service Principal
 
 ```yaml title="backup.yaml"
 storage:
   backend: azure
-  container: kafka-backups
   account_name: kafkabackups123456
-  # No credentials needed - uses managed identity
+  container_name: kafka-backups
+  client_id: ${AZURE_CLIENT_ID}
+  tenant_id: ${AZURE_TENANT_ID}
+  client_secret: ${AZURE_CLIENT_SECRET}
+  prefix: production/daily
+```
+
+### With Workload Identity (AKS)
+
+```yaml title="backup.yaml"
+storage:
+  backend: azure
+  account_name: kafkabackups123456
+  container_name: kafka-backups
+  use_workload_identity: true  # Or auto-detected via AZURE_FEDERATED_TOKEN_FILE
+  prefix: production/daily
+```
+
+### With DefaultAzureCredential (Auto-detect)
+
+```yaml title="backup.yaml"
+storage:
+  backend: azure
+  account_name: kafkabackups123456
+  container_name: kafka-backups
+  # No credentials - uses Azure SDK's DefaultAzureCredential chain
+  prefix: production/daily
+```
+
+### Custom Endpoint (Sovereign Clouds)
+
+For Azure Government, China, or private endpoints:
+
+```yaml title="backup.yaml"
+storage:
+  backend: azure
+  account_name: kafkabackups123456
+  container_name: kafka-backups
+  endpoint: https://kafkabackups123456.blob.core.usgovcloudapi.net
+  account_key: ${AZURE_STORAGE_KEY}
   prefix: production/daily
 ```
 
@@ -175,10 +226,28 @@ storage:
 |----------|-------------|
 | `AZURE_STORAGE_ACCOUNT` | Storage account name |
 | `AZURE_STORAGE_KEY` | Storage account key |
-| `AZURE_STORAGE_CONNECTION_STRING` | Full connection string |
-| `AZURE_CLIENT_ID` | Service principal client ID |
+| `AZURE_SAS_TOKEN` | SAS token for time-limited access |
+| `AZURE_CLIENT_ID` | Service principal or managed identity client ID |
 | `AZURE_CLIENT_SECRET` | Service principal secret |
 | `AZURE_TENANT_ID` | Azure AD tenant ID |
+| `AZURE_FEDERATED_TOKEN_FILE` | Auto-injected by Workload Identity webhook |
+| `AZURE_AUTHORITY_HOST` | Azure AD authority (auto-injected) |
+
+### Generate SAS Token
+
+```bash
+# Generate SAS token with 1-year expiry
+END_DATE=$(date -u -d "+1 year" '+%Y-%m-%dT%H:%MZ')
+
+az storage container generate-sas \
+  --account-name $STORAGE_ACCOUNT \
+  --name kafka-backups \
+  --permissions rwdl \
+  --expiry $END_DATE \
+  --auth-mode login \
+  --as-user \
+  -o tsv
+```
 
 ## AKS Workload Identity
 

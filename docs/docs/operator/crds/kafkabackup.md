@@ -82,13 +82,35 @@ spec:
         accessKeyKey: accessKey
         secretKeyKey: secretKey
 
-    # Azure Blob configuration
+    # Azure Blob configuration (v0.2.1+)
     azure:
+      accountName: kafkabackups123456
       container: kafka-backups
       prefix: production/hourly
-      connectionStringSecret:
+      # Choose one authentication method:
+
+      # Option 1: Account Key
+      credentialsSecret:
         name: azure-credentials
-        key: connectionString
+        accountKeyKey: AZURE_STORAGE_KEY
+
+      # Option 2: SAS Token
+      # sasTokenSecret:
+      #   name: azure-sas-credentials
+      #   sasTokenKey: AZURE_SAS_TOKEN
+
+      # Option 3: Service Principal
+      # servicePrincipalSecret:
+      #   name: azure-sp-credentials
+      #   clientIdKey: AZURE_CLIENT_ID
+      #   tenantIdKey: AZURE_TENANT_ID
+      #   clientSecretKey: AZURE_CLIENT_SECRET
+
+      # Option 4: Workload Identity (AKS)
+      # useWorkloadIdentity: true
+
+      # Optional: Custom endpoint for sovereign clouds
+      # endpoint: https://kafkabackups.blob.core.usgovcloudapi.net
 
     # GCS configuration
     gcs:
@@ -210,6 +232,42 @@ spec:
 | `endpoint` | string | No | Custom S3 endpoint |
 | `credentialsSecret` | object | No | Credentials secret (uses IRSA if omitted) |
 
+### azure
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `accountName` | string | Yes | Azure storage account name |
+| `container` | string | Yes | Blob container name |
+| `prefix` | string | No | Blob name prefix |
+| `endpoint` | string | No | Custom endpoint (sovereign clouds) |
+| `useWorkloadIdentity` | bool | No | Enable AKS Workload Identity (default: false) |
+| `credentialsSecret` | object | No | Account key secret reference |
+| `sasTokenSecret` | object | No | SAS token secret reference |
+| `servicePrincipalSecret` | object | No | Service Principal credentials |
+
+### azure.credentialsSecret
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `name` | string | Yes | Secret name |
+| `accountKeyKey` | string | No | Key for account key (default: AZURE_STORAGE_KEY) |
+
+### azure.sasTokenSecret
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `name` | string | Yes | Secret name |
+| `sasTokenKey` | string | No | Key for SAS token (default: AZURE_SAS_TOKEN) |
+
+### azure.servicePrincipalSecret
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `name` | string | Yes | Secret name |
+| `clientIdKey` | string | No | Key for client ID (default: AZURE_CLIENT_ID) |
+| `tenantIdKey` | string | No | Key for tenant ID (default: AZURE_TENANT_ID) |
+| `clientSecretKey` | string | No | Key for client secret (default: AZURE_CLIENT_SECRET) |
+
 ### retention
 
 | Field | Type | Required | Description |
@@ -310,7 +368,7 @@ spec:
     backups: 168
 ```
 
-### Backup to Azure
+### Backup to Azure (Account Key)
 
 ```yaml
 apiVersion: kafka.oso.sh/v1alpha1
@@ -328,11 +386,71 @@ spec:
   storage:
     storageType: azure
     azure:
+      accountName: kafkabackups123456
       container: kafka-backups
       prefix: production
-      connectionStringSecret:
+      credentialsSecret:
         name: azure-storage
-        key: connectionString
+        accountKeyKey: AZURE_STORAGE_KEY
+```
+
+### Backup to Azure (Workload Identity - AKS)
+
+```yaml
+apiVersion: kafka.oso.sh/v1alpha1
+kind: KafkaBackup
+metadata:
+  name: azure-backup-wi
+spec:
+  kafkaCluster:
+    bootstrapServers:
+      - kafka:9092
+    securityProtocol: SASL_SSL
+    saslSecret:
+      name: kafka-credentials
+      mechanism: PLAIN
+
+  topics:
+    - "*"
+  excludeTopics:
+    - "__*"
+
+  storage:
+    storageType: azure
+    azure:
+      accountName: kafkabackups123456
+      container: kafka-backups
+      prefix: production
+      useWorkloadIdentity: true  # Uses AKS Workload Identity
+
+  compression: zstd
+  compressionLevel: 3
+```
+
+### Backup to Azure (Service Principal)
+
+```yaml
+apiVersion: kafka.oso.sh/v1alpha1
+kind: KafkaBackup
+metadata:
+  name: azure-backup-sp
+spec:
+  kafkaCluster:
+    bootstrapServers:
+      - kafka:9092
+
+  topics:
+    - "orders-*"
+    - "payments-*"
+
+  storage:
+    storageType: azure
+    azure:
+      accountName: kafkabackups123456
+      container: kafka-backups
+      prefix: production
+      servicePrincipalSecret:
+        name: azure-sp-credentials
 ```
 
 ### Backup to PVC

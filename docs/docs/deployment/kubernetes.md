@@ -236,6 +236,261 @@ spec:
                     name: aws-credentials  # Or use IRSA
 ```
 
+## Azure Blob Storage Configuration
+
+### Prerequisites
+
+- AKS cluster with Workload Identity enabled
+- Azure Key Vault for secret management
+- Azure CSI Secrets Store Driver installed
+
+### Install Azure CSI Secrets Store Driver
+
+```bash
+# Add Helm repo
+helm repo add csi-secrets-store-provider-azure https://azure.github.io/secrets-store-csi-driver-provider-azure/charts
+helm repo update
+
+# Install the driver
+helm install csi-secrets-store-provider-azure csi-secrets-store-provider-azure/csi-secrets-store-provider-azure \
+  --namespace kube-system
+```
+
+### Create Managed Identity
+
+```bash
+# Create managed identity for Kafka Backup
+az identity create \
+  --name kafka-backup-identity \
+  --resource-group <resource-group>
+
+# Get identity client ID
+CLIENT_ID=$(az identity show \
+  --name kafka-backup-identity \
+  --resource-group <resource-group> \
+  --query clientId -o tsv)
+
+# Assign Storage Blob Data Contributor role
+az role assignment create \
+  --role "Storage Blob Data Contributor" \
+  --assignee $CLIENT_ID \
+  --scope /subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
+
+# Grant Key Vault access
+az keyvault set-policy \
+  --name <key-vault-name> \
+  --object-id $(az identity show --name kafka-backup-identity --resource-group <resource-group> --query principalId -o tsv) \
+  --secret-permissions get list
+```
+
+### Create Federated Credential
+
+```bash
+# Get AKS OIDC issuer URL
+AKS_OIDC_ISSUER=$(az aks show \
+  --name <aks-cluster> \
+  --resource-group <resource-group> \
+  --query oidcIssuerProfile.issuerUrl -o tsv)
+
+# Create federated credential
+az identity federated-credential create \
+  --name kafka-backup-federated \
+  --identity-name kafka-backup-identity \
+  --resource-group <resource-group> \
+  --issuer $AKS_OIDC_ISSUER \
+  --subject system:serviceaccount:kafka-backup:kafka-backup \
+  --audience api://AzureADTokenExchange
+```
+
+### Create ServiceAccount with Workload Identity
+
+```yaml title="serviceaccount.yaml"
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: kafka-backup
+  namespace: kafka-backup
+  annotations:
+    azure.workload.identity/client-id: <managed-identity-client-id>
+  labels:
+    azure.workload.identity/use: "true"
+```
+
+### Create SecretProviderClass
+
+Use the Azure CSI Secrets Store Driver to sync secrets from Azure Key Vault:
+
+```yaml title="secretproviderclass.yaml"
+apiVersion: secrets-store.csi.x-k8s.io/v1
+kind: SecretProviderClass
+metadata:
+  name: kafka-backup-secrets
+  namespace: kafka-backup
+spec:
+  provider: azure
+  parameters:
+    usePodIdentity: "false"
+    clientID: <managed-identity-client-id>
+    keyvaultName: <key-vault-name>
+    tenantId: <azure-tenant-id>
+    objects: |
+      array:
+        - |
+          objectName: kafka-sasl-username
+          objectType: secret
+        - |
+          objectName: kafka-sasl-password
+          objectType: secret
+        - |
+          objectName: azure-storage-account-key
+          objectType: secret
+  secretObjects:
+    - secretName: kafka-backup-secrets
+      type: Opaque
+      data:
+        - objectName: kafka-sasl-username
+          key: KAFKA_SASL_USERNAME
+        - objectName: kafka-sasl-password
+          key: KAFKA_SASL_PASSWORD
+        - objectName: azure-storage-account-key
+          key: AZURE_STORAGE_KEY
+```
+
+### Update ConfigMap for Azure Blob Storage
+
+```yaml title="configmap-azure.yaml"
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kafka-backup-config
+  namespace: kafka-backup
+data:
+  backup.yaml: |
+    mode: backup
+    backup_id: "k8s-daily-backup"
+
+    source:
+      bootstrap_servers:
+        - <kafka-bootstrap-server>:9092
+      security:
+        security_protocol: SASL_SSL
+        sasl_mechanism: PLAIN
+        sasl_username: ${KAFKA_SASL_USERNAME}
+        sasl_password: ${KAFKA_SASL_PASSWORD}
+      topics:
+        include:
+          - "*"
+        exclude:
+          - "__consumer_offsets"
+          - "_schemas"
+
+    storage:
+      backend: azure
+      account_name: <storage-account-name>
+      container_name: kafka-backups
+      account_key: ${AZURE_STORAGE_KEY}
+      prefix: production/daily
+
+    backup:
+      compression: zstd
+      compression_level: 3
+```
+
+### Update CronJob for Azure
+
+```yaml title="cronjob-azure.yaml"
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: kafka-backup
+  namespace: kafka-backup
+spec:
+  schedule: "0 2 * * *"
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            azure.workload.identity/use: "true"
+        spec:
+          serviceAccountName: kafka-backup
+          restartPolicy: OnFailure
+          containers:
+            - name: kafka-backup
+              image: ghcr.io/osodevops/kafka-backup:latest
+              args:
+                - backup
+                - --config
+                - /config/backup.yaml
+              env:
+                - name: KAFKA_SASL_USERNAME
+                  valueFrom:
+                    secretKeyRef:
+                      name: kafka-backup-secrets
+                      key: KAFKA_SASL_USERNAME
+                - name: KAFKA_SASL_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: kafka-backup-secrets
+                      key: KAFKA_SASL_PASSWORD
+                - name: AZURE_STORAGE_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: kafka-backup-secrets
+                      key: AZURE_STORAGE_KEY
+              volumeMounts:
+                - name: config
+                  mountPath: /config
+                  readOnly: true
+                - name: secrets-store
+                  mountPath: /mnt/secrets-store
+                  readOnly: true
+          volumes:
+            - name: config
+              configMap:
+                name: kafka-backup-config
+            - name: secrets-store
+              csi:
+                driver: secrets-store.csi.k8s.io
+                readOnly: true
+                volumeAttributes:
+                  secretProviderClass: kafka-backup-secrets
+```
+
+### Using Workload Identity (No Storage Key)
+
+For keyless authentication using Workload Identity:
+
+```yaml title="configmap-azure-workload-identity.yaml"
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kafka-backup-config
+  namespace: kafka-backup
+data:
+  backup.yaml: |
+    mode: backup
+    backup_id: "k8s-daily-backup"
+
+    source:
+      bootstrap_servers:
+        - <kafka-bootstrap-server>:9092
+      topics:
+        include:
+          - "*"
+
+    storage:
+      backend: azure
+      account_name: <storage-account-name>
+      container_name: kafka-backups
+      use_workload_identity: true
+      prefix: production/daily
+
+    backup:
+      compression: zstd
+```
+
 ## Kafka Authentication
 
 ### SASL/SCRAM Authentication

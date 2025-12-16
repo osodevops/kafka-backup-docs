@@ -262,11 +262,80 @@ az identity create \
   --name kafka-backup-identity \
   --resource-group myResourceGroup
 
-# Assign role
+# Get identity client ID
+CLIENT_ID=$(az identity show \
+  --name kafka-backup-identity \
+  --resource-group myResourceGroup \
+  --query clientId -o tsv)
+
+# Assign Storage Blob Data Contributor role
 az role assignment create \
-  --assignee <identity-client-id> \
+  --assignee $CLIENT_ID \
   --role "Storage Blob Data Contributor" \
   --scope /subscriptions/<sub>/resourceGroups/<rg>/providers/Microsoft.Storage/storageAccounts/<account>
+
+# Create federated credential
+az identity federated-credential create \
+  --name kafka-backup-federated \
+  --identity-name kafka-backup-identity \
+  --resource-group myResourceGroup \
+  --issuer $(az aks show --name myAKSCluster --resource-group myResourceGroup --query oidcIssuerProfile.issuerUrl -o tsv) \
+  --subject system:serviceaccount:kafka-backup:kafka-backup-operator \
+  --audience api://AzureADTokenExchange
+```
+
+#### Azure Key Vault CSI Secrets Store Driver
+
+Install the CSI Secrets Store Driver for Azure Key Vault integration:
+
+```bash
+# Add the Helm repo
+helm repo add csi-secrets-store-provider-azure \
+  https://azure.github.io/secrets-store-csi-driver-provider-azure/charts
+helm repo update
+
+# Install the Azure provider
+helm install csi-secrets-store-provider-azure \
+  csi-secrets-store-provider-azure/csi-secrets-store-provider-azure \
+  --namespace kube-system
+```
+
+Grant the managed identity access to Key Vault:
+
+```bash
+# Get the managed identity principal ID
+PRINCIPAL_ID=$(az identity show \
+  --name kafka-backup-identity \
+  --resource-group myResourceGroup \
+  --query principalId -o tsv)
+
+# Grant secret access to Key Vault
+az keyvault set-policy \
+  --name <key-vault-name> \
+  --object-id $PRINCIPAL_ID \
+  --secret-permissions get list
+```
+
+#### Helm Values for Azure
+
+```yaml
+serviceAccount:
+  create: true
+  name: kafka-backup-operator
+  annotations:
+    azure.workload.identity/client-id: <managed-identity-client-id>
+  labels:
+    azure.workload.identity/use: "true"
+
+# For Key Vault integration
+deployment:
+  tenantId: <azure-tenant-id>
+  workloadIdentityClientId: <managed-identity-client-id>
+  syncSecrets:
+    keyVaultName: <key-vault-name>
+    envSecrets:
+      kafka-sasl-username: KAFKA_SASL_USERNAME
+      kafka-sasl-password: KAFKA_SASL_PASSWORD
 ```
 
 ### GCP (GKE)

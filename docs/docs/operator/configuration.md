@@ -165,6 +165,23 @@ extraVolumeMounts: []
   # - name: certs
   #   mountPath: /certs
   #   readOnly: true
+
+# Azure-specific deployment configuration
+deployment:
+  # Azure tenant ID (required for Key Vault integration)
+  tenantId: ""
+  # Managed identity client ID for Workload Identity
+  workloadIdentityClientId: ""
+  # Service account name
+  serviceAccountName: ""
+  # Sync secrets from Azure Key Vault
+  syncSecrets:
+    # Key Vault name
+    keyVaultName: ""
+    # Map Key Vault secret names to environment variable names
+    envSecrets: {}
+      # kafka-sasl-username: KAFKA_SASL_USERNAME
+      # kafka-sasl-password: KAFKA_SASL_PASSWORD
 ```
 
 ## Configuration Sections
@@ -223,11 +240,47 @@ serviceAccount:
   # Azure Workload Identity
   annotations:
     azure.workload.identity/client-id: <client-id>
+  labels:
+    azure.workload.identity/use: "true"
 
   # GCP Workload Identity
   annotations:
     iam.gke.io/gcp-service-account: kafka-backup@project.iam.gserviceaccount.com
 ```
+
+### Azure Key Vault Integration
+
+For AKS deployments, sync secrets from Azure Key Vault using the CSI Secrets Store Driver:
+
+```yaml
+deployment:
+  # Azure tenant ID
+  tenantId: <azure-tenant-id>
+
+  # Managed identity client ID for Workload Identity
+  workloadIdentityClientId: <managed-identity-client-id>
+
+  # Service account name (must have workload identity annotations)
+  serviceAccountName: kafka-backup-operator
+
+  # Sync secrets from Azure Key Vault
+  syncSecrets:
+    # Key Vault name
+    keyVaultName: <key-vault-name>
+
+    # Map Key Vault secret names to environment variable names
+    envSecrets:
+      # Key Vault secret name: Environment variable name
+      kafka-sasl-username: KAFKA_SASL_USERNAME
+      kafka-sasl-password: KAFKA_SASL_PASSWORD
+      azure-storage-account-key: AZURE_STORAGE_KEY
+```
+
+This configuration creates a `SecretProviderClass` that:
+- Authenticates to Azure Key Vault using Workload Identity
+- Fetches the specified secrets from Key Vault
+- Creates a Kubernetes Secret with the mapped environment variable names
+- Mounts the secrets as environment variables in the pod
 
 ### Security
 

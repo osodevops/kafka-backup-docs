@@ -302,6 +302,175 @@ metadata:
     azure.workload.identity/use: "true"
 ```
 
+## Azure Key Vault Integration
+
+Use Azure Key Vault with the CSI Secrets Store Driver to securely manage credentials for Kafka and storage access.
+
+### Prerequisites
+
+- AKS cluster with Workload Identity enabled
+- Azure Key Vault created
+- Azure CSI Secrets Store Driver installed
+
+### Install CSI Secrets Store Driver
+
+```bash
+# Add the Helm repo
+helm repo add csi-secrets-store-provider-azure \
+  https://azure.github.io/secrets-store-csi-driver-provider-azure/charts
+helm repo update
+
+# Install the Azure provider
+helm install csi-secrets-store-provider-azure \
+  csi-secrets-store-provider-azure/csi-secrets-store-provider-azure \
+  --namespace kube-system
+```
+
+### Grant Key Vault Access
+
+```bash
+# Get the managed identity principal ID
+PRINCIPAL_ID=$(az identity show \
+  --name kafka-backup-identity \
+  --resource-group $RESOURCE_GROUP \
+  --query principalId -o tsv)
+
+# Grant secret access to Key Vault
+az keyvault set-policy \
+  --name $KEY_VAULT_NAME \
+  --object-id $PRINCIPAL_ID \
+  --secret-permissions get list
+```
+
+### Store Secrets in Key Vault
+
+```bash
+# Store Kafka credentials
+az keyvault secret set \
+  --vault-name $KEY_VAULT_NAME \
+  --name kafka-sasl-username \
+  --value "<kafka-api-key>"
+
+az keyvault secret set \
+  --vault-name $KEY_VAULT_NAME \
+  --name kafka-sasl-password \
+  --value "<kafka-api-secret>"
+
+# Store storage account key (if not using Workload Identity for storage)
+az keyvault secret set \
+  --vault-name $KEY_VAULT_NAME \
+  --name azure-storage-account-key \
+  --value "<storage-account-key>"
+```
+
+### Create SecretProviderClass
+
+The SecretProviderClass syncs secrets from Azure Key Vault to Kubernetes secrets:
+
+```yaml title="secretproviderclass.yaml"
+apiVersion: secrets-store.csi.x-k8s.io/v1
+kind: SecretProviderClass
+metadata:
+  name: kafka-backup-secrets
+  namespace: kafka-backup
+spec:
+  provider: azure
+  parameters:
+    usePodIdentity: "false"
+    clientID: <managed-identity-client-id>
+    keyvaultName: <key-vault-name>
+    tenantId: <azure-tenant-id>
+    objects: |
+      array:
+        - |
+          objectName: kafka-sasl-username
+          objectType: secret
+        - |
+          objectName: kafka-sasl-password
+          objectType: secret
+        - |
+          objectName: azure-storage-account-key
+          objectType: secret
+  secretObjects:
+    - secretName: kafka-backup-secrets
+      type: Opaque
+      data:
+        - objectName: kafka-sasl-username
+          key: KAFKA_SASL_USERNAME
+        - objectName: kafka-sasl-password
+          key: KAFKA_SASL_PASSWORD
+        - objectName: azure-storage-account-key
+          key: AZURE_STORAGE_KEY
+```
+
+### Using Secrets in Pods
+
+Mount the CSI volume and reference the synced Kubernetes secret:
+
+```yaml title="pod-with-secrets.yaml"
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kafka-backup
+  namespace: kafka-backup
+  labels:
+    azure.workload.identity/use: "true"
+spec:
+  serviceAccountName: kafka-backup
+  containers:
+    - name: kafka-backup
+      image: ghcr.io/osodevops/kafka-backup:latest
+      env:
+        - name: KAFKA_SASL_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: kafka-backup-secrets
+              key: KAFKA_SASL_USERNAME
+        - name: KAFKA_SASL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: kafka-backup-secrets
+              key: KAFKA_SASL_PASSWORD
+        - name: AZURE_STORAGE_KEY
+          valueFrom:
+            secretKeyRef:
+              name: kafka-backup-secrets
+              key: AZURE_STORAGE_KEY
+      volumeMounts:
+        - name: secrets-store
+          mountPath: /mnt/secrets-store
+          readOnly: true
+  volumes:
+    - name: secrets-store
+      csi:
+        driver: secrets-store.csi.k8s.io
+        readOnly: true
+        volumeAttributes:
+          secretProviderClass: kafka-backup-secrets
+```
+
+### Helm Values for Key Vault Integration
+
+When using the Kafka Backup Operator Helm chart, configure Key Vault integration:
+
+```yaml title="values-azure-keyvault.yaml"
+deployment:
+  tenantId: <azure-tenant-id>
+  workloadIdentityClientId: <managed-identity-client-id>
+  serviceAccountName: kafka-backup
+  syncSecrets:
+    keyVaultName: <key-vault-name>
+    envSecrets:
+      kafka-sasl-username: KAFKA_SASL_USERNAME
+      kafka-sasl-password: KAFKA_SASL_PASSWORD
+      azure-storage-account-key: AZURE_STORAGE_KEY
+```
+
+This configuration:
+- Uses Workload Identity for authentication (no stored credentials)
+- Syncs secrets from Azure Key Vault to Kubernetes secrets
+- Maps Key Vault secret names to environment variable names
+
 ## Lifecycle Management
 
 ### Set Up Lifecycle Policy

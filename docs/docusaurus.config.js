@@ -6,8 +6,8 @@ const config = {
   title: 'OSO Kafka Backup',
   tagline: 'High-performance backup and restore for Apache Kafka',
   favicon: 'img/favicon.ico',
-  url: 'https://osodevops.github.io',
-  baseUrl: '/kafka-backup-docs/',
+  url: 'https://kafkabackup.com',
+  baseUrl: '/',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',

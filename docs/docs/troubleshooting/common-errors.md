@@ -296,6 +296,39 @@ backup:
 
 ## Restore Errors
 
+### Partition Not Available
+
+```
+Error: Produce error: Kafka error: Partition 0 not available for topic test-backup_restored
+```
+
+**Causes:**
+- Topic doesn't exist when using `topic_mapping` to restore to a new topic name
+- Topic was just created but Kafka hasn't finished propagating metadata
+- Insufficient replication factor for the cluster
+
+**Solutions:**
+
+```yaml
+# Fix: Enable auto topic creation (v0.3.0+)
+restore:
+  create_topics: true
+  default_replication_factor: 3  # Match your cluster's requirements
+  topic_mapping:
+    source-topic: target-topic
+```
+
+```bash
+# Alternative: Pre-create the topic before restore
+kafka-topics --bootstrap-server kafka:9092 \
+  --create --topic test-backup_restored \
+  --partitions 6 --replication-factor 3
+```
+
+:::tip
+When using `topic_mapping`, always enable `create_topics: true` to ensure target topics are created automatically before the restore begins. This was fixed in v0.3.0.
+:::
+
 ### Backup Not Found
 
 ```
@@ -566,6 +599,7 @@ kafka-broker-api-versions --bootstrap-server target-kafka:9092
 | SASL auth failed | Wrong credentials | Test with console tools |
 | Access denied (S3) | IAM permissions | Check IAM policy |
 | Topic not found | ACL or typo | List topics |
+| Partition not available | Topic doesn't exist | Enable `create_topics` |
 | Backup not found | Wrong path/ID | List backups |
 | Schema ID not found | SR not backed up | Enable SR sync |
 

@@ -122,6 +122,10 @@ restore:
   time_window_start: 1731236400000  # Nov 10, 2024 10:00:00 UTC
   time_window_end: 1731250800000    # Nov 10, 2024 14:00:00 UTC
 
+  # Auto-create topics if they don't exist (v0.3.0+)
+  create_topics: true
+  default_replication_factor: 3
+
   # Optional: Only restore specific topics
   # topics:
   #   - orders
@@ -138,6 +142,10 @@ restore:
   # Consumer offset handling
   consumer_group_strategy: skip
 ```
+
+:::tip Auto Topic Creation
+When using `topic_mapping` to restore to new topic names, enable `create_topics: true` to automatically create the target topics. Set `default_replication_factor` to match your cluster's requirements (typically 3 for production).
+:::
 
 ## Step 4: Validate Before Restore
 

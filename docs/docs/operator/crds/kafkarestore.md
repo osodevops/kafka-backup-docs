@@ -71,6 +71,10 @@ spec:
     orders: restored-orders
     payments: restored-payments
 
+  # Auto-create topics (v0.3.0+)
+  createTopics: true
+  defaultReplicationFactor: 3
+
   # Point-in-time recovery
   pitr:
     enabled: true
@@ -154,6 +158,17 @@ topicMapping:
   source-topic-1: target-topic-1
   source-topic-2: target-topic-2
 ```
+
+### createTopics
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `createTopics` | bool | No | Auto-create topics if they don't exist (v0.3.0+) |
+| `defaultReplicationFactor` | int | No | Replication factor for auto-created topics |
+
+:::tip
+When using `topicMapping` to restore to new topic names, enable `createTopics: true` to automatically create the target topics. This prevents "Partition not available" errors that can occur when producing to non-existent topics.
+:::
 
 ### offsetReset
 
@@ -321,6 +336,10 @@ spec:
   topicMapping:
     orders: dev-orders
     payments: dev-payments
+
+  # Auto-create the remapped topics (v0.3.0+)
+  createTopics: true
+  defaultReplicationFactor: 1  # Lower for dev environment
 ```
 
 ### Cross-Region Restore

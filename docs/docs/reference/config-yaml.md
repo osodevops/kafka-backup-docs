@@ -267,6 +267,10 @@ restore:
   time_window_start: 1701417600000  # Unix milliseconds (optional)
   time_window_end: 1701504000000    # Unix milliseconds (optional)
 
+  # Auto-create topics if they don't exist (v0.3.0+)
+  create_topics: true
+  default_replication_factor: 3     # Replication factor for new topics
+
   # Partition filtering
   source_partitions:              # Only restore specific partitions
     - 0
@@ -320,6 +324,8 @@ restore:
 |--------|------|---------|-------------|
 | `time_window_start` | int | - | PITR start timestamp (Unix ms) |
 | `time_window_end` | int | - | PITR end timestamp (Unix ms) |
+| `create_topics` | bool | `false` | Auto-create topics if they don't exist (v0.3.0+) |
+| `default_replication_factor` | int | `1` | Replication factor for auto-created topics |
 | `source_partitions` | list | - | Partitions to restore |
 | `partition_mapping` | map | - | Partition remapping |
 | `topic_mapping` | map | - | Topic remapping |

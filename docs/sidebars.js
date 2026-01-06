@@ -138,6 +138,23 @@ const sidebars = {
         'examples/multi-cluster-dr',
       ],
     },
+    {
+      type: 'category',
+      label: 'LLM Resources',
+      collapsed: false,
+      items: [
+        {
+          type: 'link',
+          label: 'llms.txt',
+          href: '/llms.txt',
+        },
+        {
+          type: 'link',
+          label: 'markdown.zip',
+          href: '/markdown.zip',
+        },
+      ],
+    },
   ],
 };
 

@@ -54,6 +54,7 @@ jobs:
       - name: Copy LLM docs to build root
         run: |
           cp ${{ steps.llm-docs.outputs.llms-txt-path }} ./build/llms.txt
+          cp ${{ steps.llm-docs.outputs.llms-full-txt-path }} ./build/llms-full.txt
           cp ${{ steps.llm-docs.outputs.markdown-zip-path }} ./build/markdown.zip
 
       - name: Upload artifact

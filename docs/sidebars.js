@@ -146,12 +146,12 @@ const sidebars = {
         {
           type: 'link',
           label: 'llms.txt',
-          href: '/llms.txt',
+          href: 'https://kafkabackup.com/llms.txt',
         },
         {
           type: 'link',
           label: 'markdown.zip',
-          href: '/markdown.zip',
+          href: 'https://kafkabackup.com/markdown.zip',
         },
       ],
     },

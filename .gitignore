@@ -4,6 +4,7 @@ node_modules/
 # Build output
 docs/build/
 docs/.docusaurus/
+docs/llm-docs/
 
 # Environment
 .env

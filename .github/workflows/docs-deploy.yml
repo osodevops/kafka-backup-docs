@@ -40,6 +40,22 @@ jobs:
         env:
           NODE_OPTIONS: --max-old-space-size=4096
 
+      - name: Generate LLM documentation
+        uses: osodevops/docusaurus-llm-docs@v1
+        id: llm-docs
+        with:
+          build-dir: './docs/build'
+          output-dir: './docs/build/llm-docs'
+          base-url: 'https://osodevops.github.io/kafka-backup-docs'
+          product-name: 'OSO Kafka Backup'
+          tagline: 'High-performance backup and restore for Apache Kafka'
+          sidebar-path: './docs/sidebars.js'
+
+      - name: Copy LLM docs to build root
+        run: |
+          cp ${{ steps.llm-docs.outputs.llms-txt-path }} ./build/llms.txt
+          cp ${{ steps.llm-docs.outputs.markdown-zip-path }} ./build/markdown.zip
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

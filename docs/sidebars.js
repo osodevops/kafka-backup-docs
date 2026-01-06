@@ -1,7 +1,3 @@
-import config from './docusaurus.config.js';
-
-const siteUrl = config.url + config.baseUrl.replace(/\/$/, '');
-
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   docsSidebar: [
@@ -140,23 +136,6 @@ const sidebars = {
         'examples/spring-boot',
         'examples/aws-lambda',
         'examples/multi-cluster-dr',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'LLM Resources',
-      collapsed: false,
-      items: [
-        {
-          type: 'link',
-          label: 'llms.txt',
-          href: `${siteUrl}/llms.txt`,
-        },
-        {
-          type: 'link',
-          label: 'markdown.zip',
-          href: `${siteUrl}/markdown.zip`,
-        },
       ],
     },
   ],

@@ -56,6 +56,10 @@ Cause: certificate verify failed
 - Expired certificate
 - Hostname mismatch
 
+:::info Fixed in v0.4.0
+Prior to v0.4.0, custom CA certificates configured via `ssl_ca_location` were not being used during TLS connections. This caused "UnknownIssuer" errors when connecting to Kafka brokers with self-signed or internal CA certificates. Upgrade to v0.4.0 or later to resolve this issue. See [GitHub Issue #3](https://github.com/osodevops/kafka-backup/issues/3) for details.
+:::
+
 **Solutions:**
 
 ```bash
